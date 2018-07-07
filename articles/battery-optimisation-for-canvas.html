@@ -44,3 +44,20 @@ Canvas & WebGL Optimisation
 	I would really like to promote battery efficiency in Canvas & WebGL experiences
 	With the Battery API and a smarter, on-demand design of rendering we can make dramatic savings in performance & battery
 	Fast, Good & Cheap tradeoffs of CPU, GPU & Memory
+
+
+
+
+
+Canvas & WebGL Optimisation
+Article/list on best practices to optimise Canvas & WebGL for battery efficiency.
+Typical adage of precomputation. Spend computing stuff ahead of time, trading away
+memory, and you’ll save lot of time in the future. @substack mentioned they use an
+`.idle` property on effects, so that rendering parts know if it needs to rAF more
+frames or if it can sit there – Definitely a clever way to do this, I think I often
+seen this implemented as a `.isDirty` property in the past, an inversion here I feel
+is  @mhazani says that one big optimization factor is realtime lighting, best avoided
+if possible and that baked lighting can go a long way in many cases – I agree, have
+seen baked stuff often look pretty phenomenal, especially with my own personal
+experience of that in Second Life, hah, it was a classic way to get more bang per
+buck for a lot of content creators.
