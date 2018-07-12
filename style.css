@@ -166,6 +166,7 @@ nav.primary {
 	right: 0%;
 	left: 10%;
 	font-size: 140%;
+	visibility: hidden;
 }
 
 nav.primary .item {
@@ -175,6 +176,7 @@ nav.primary .item {
 	padding: 0 .2em;
 	border: 2px solid transparent;
 	border-radius: 4px;
+	visibility: initial;
 }
 
 nav.primary .item:focus-visible {
@@ -201,10 +203,11 @@ div.nested {
 
 ol.links {
 	display: inline-flex;
-	overflow-x: scroll;
+/* 	overflow-x: scroll; */
 	flex: 1 1 0;
 	align-items: center;
 	font-size: 50%;
+	visibility: initial;
 }
 
 ol.links li {}
@@ -218,12 +221,7 @@ ol.links a {
 }
 
 ol.links .status,
-ol.links time {
-/* 	display: none; */
-/* 	opacity: 0.5; */
-	font-weight: bold;
-	font-size: 50%;
-}
+ol.links time {/* 	display: none; */opacity: 0.8;font-weight: bold;font-size: 50%;}
 
 ol.links h3 {
 	white-space: nowrap;
@@ -273,9 +271,9 @@ ol.links a:active {
 		var(--ambient-lightness, black),
 		var(--ambient-occlusion, 0)
 	);
-	--ambient-occlusion: 0.1;
-	--ambient-occlusion-search: 40px;
-	--texture: linear-gradient(lightgray, lightgray);
+	--ambient-occlusion: 0.2;
+	--ambient-occlusion-search: 60px;
+	--texture: linear-gradient(currentColor, currentColor);
 }
 
 
@@ -286,7 +284,8 @@ ol.links a:active {
 	--width: 100px;
 	--height: var(--width);
 	--depth: var(--width);
-	--texture: url(https://i.gyazo.com/84a7ac13ec361afdee2a98df172ea6a3.jpg);
+	--texture: linear-gradient(#efc672, #e7b764);
+	--texture: url(https://i.gyazo.com/84a7ac13ec361afdee2a98df172ea6a3.jpg), linear-gradient(#efc672, #e7b764);
 	transform: perspective(700px) rotateX(-15deg) rotateY(35deg);
 	transform-style: preserve-3d;
 	animation: spin 30s infinite cubic-bezier(0, 0.54, 1, 0.63);
@@ -323,7 +322,7 @@ ol.links a:active {
 .box > :nth-child(5),
 .box > :nth-child(6) {
 	background-image:
-		linear-gradient(0deg, var(--ambient-color) 0, calc(var(--ambient-occlusion-search) * 1.2), transparent calc(var(--ambient-occlusion-search) * 2.5)),
+		linear-gradient(0deg, var(--ambient-color) 0, calc(var(--ambient-occlusion-search) * 0.5), transparent calc(var(--ambient-occlusion-search) * 3.5)),
 		linear-gradient(0deg, hsla(0, 0%, 0%, var(--shadow)), hsla(0, 0%, 0%, var(--shadow))),
 		var(--texture, linear-gradient(white, black));
 }
@@ -351,18 +350,18 @@ ol.links a:active {
 	margin-left: calc(var(--half-width) * -1);
 	margin-top: calc(var(--half-depth) * -1);
 	box-shadow: 0 0 calc(var(--ambient-occlusion-search) * 2) calc(var(--ambient-occlusion-search) * 0.5) var(--ambient-color, black);
-	transform: rotate3d(1, 0, 0, 0.75turn) translateZ(var(--half-height)) rotateY(0.5turn);
+	transform: rotate3d(1, 0, 0, 0.75turn) translateZ(var(--half-height)) translateZ(-1px) rotateY(0.5turn);
 }
 
 
 
 .box:hover { animation-play-state: paused }
 .box:hover {
-	--ambient-hue: 40;
+	--ambient-hue: 0;
 	--ambient-saturation: 100%;
-	--ambient-lightness: 60%;
-	--ambient-occlusion: 0.8;
-	--ambient-occlusion-search: 50px;
+	--ambient-lightness: 100%;
+	--ambient-occlusion: 1;
+	--ambient-occlusion-search: 5px;
 }
 
 
