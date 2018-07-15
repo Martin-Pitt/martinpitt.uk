@@ -288,7 +288,7 @@ ol.links a:active {
 	--texture: url(https://i.gyazo.com/84a7ac13ec361afdee2a98df172ea6a3.jpg), linear-gradient(#efc672, #e7b764);
 	transform: perspective(700px) rotateX(-15deg) rotateY(35deg);
 	transform-style: preserve-3d;
-	animation: spin 30s infinite cubic-bezier(0, 0.54, 1, 0.63);
+	animation: spin 30s 1 cubic-bezier(0, 0.54, 1, 0.63);
 }
 
 
