@@ -52,3 +52,48 @@ Bashing JavaScript
 	http://2ality.com/2011/12/nodejs-shell-scripting.html
 
 
+
+
+Like many web developers, I grew up becoming familiar with the commandline as a daily chore.
+
+It is a fascinating world of little programs that take text, process it or do something because of it, finally returning text themselves.
+This is especially empowering and incredible when these little programs are connected to eachother into a pipeline of machinery.
+
+Eventually this kind of meta programming leads to learning a scripting language called BASH.
+
+However, just as the world of web development changed, and the idea of universal JavaScript became a thing.
+I realised that it was slow having to translate thoughts & ideas into a language I rarely use and find confusing (BASH).
+
+
+I could picture the JavaScript code to do the same thing so easily, so why not?
+
+Turns out you can.
+
+
+If you have Node installed, then it is surprisingly to easy execute JS files as scripts; Append this line at the top:
+```
+#!/usr/bin/env node
+```
+
+Then you only need to make the file  executable as you would normally with bash scripts:
+```
+chmod u+x myscript.js
+```
+
+Then you can run it directly:
+```
+./myscript.js arg1 arg2 ...
+```
+
+
+With new ECMAScript in V8, you can do asynchronous operations. [Node.js finally has an async-friendly filesystem API](https://nodejs.org/dist/latest-v10.x/docs/api/fs.html#fs_fs_promises_api).
+When piping around data, JSON across programs is awesome.
+
+
+
+Of course, this is not for everyone. But for web developers in particular, this is great.
+
+BASH can be difficult to maintain and easy to screw up. A JavaScript file is easy to pick up even for newcomers to the team and junior members.
+
+
+
