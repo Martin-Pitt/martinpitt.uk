@@ -126,137 +126,371 @@
 			}
 		}
 	</script>
+	<script>
+		var scenes;
+		function scrollRender(event) {
+			requestAnimationFrame(scrollRender);
+			
+			if(!document.scrollingElement) return;
+			if(!scenes) return scenes = document.querySelector('.scenes');
+			
+			scenes.style.setProperty('--position', document.scrollingElement.scrollTop);
+		}
+		
+		scrollRender();
+	</script>
 	<link rel="stylesheet" href="/style.css">
 
 
 
 
 <body>
-	<nav class="primary">
-		<a href="/">Martin Pitt</a>
-		<a href="/articles/">Articles</a>
-		<a href="/projects/">Projects</a>
-		<a href="/about/">About</a>
-	</nav>
+	<div class="scenes">
+		<div id="scene-one" class="scene">
+			<div class="device">
+				<div class="browser">
+					<div class="tab">
+						<h1 class="site">
+							Martin Pitt
+						</h1>
+						
+						<h2 class="title">
+							Articles
+						</h2>
+
+						<article class="post">
+							<h3 class="title">
+								<a href="/articles/">
+									Concentric Styling Design
+								</a>
+							</h3>
+							<p class="snippet">
+								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; Over time the way you write css becomes meaningful and natural.
+								This is because as a developer you end up with a vague mental model of all the properties, let's try write that down …
+								<a class="read-more" href="/articles/">READ MORE</a>
+							</p>
+						</article>
+						
+						<article class="post">
+							<h3 class="title">
+								<a href="/articles/">
+									BASHing JavaScript
+								</a>
+							</h3>
+							<p class="snippet">
+								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; Like many web developers, I grew up becoming familiar with the commandline as a daily chore.
+								It is a fascinating world of little programs that take text, …
+								<a class="read-more" href="/articles/">READ MORE</a>
+							</p>
+						</article>
+						
+						<article class="post">
+							<h3 class="title">
+								<a href="/articles/">
+									Battery Optimisation for Canvas
+								</a>
+							</h3>
+							<p class="snippet">
+								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; I love canvas animations, but I won't deny they have a huge problem
+								&mdash; they drain the batteries out of our devices. Let's explore ways of solving this…
+								<a class="read-more" href="/articles/">READ MORE</a>
+							</p>
+						</article>
+						
+						<article class="post">
+							<h3 class="title">
+								<a href="/articles/">
+									Colour Design
+								</a>
+							</h3>
+							<p class="snippet">
+								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; I'm taking a slow approach to learning design. The topic of colour deeply fascinated me
+								in the way we feel or communicate. Here is my take on accessibility, surface area, gradients and perception. …
+								<a class="read-more" href="/articles/">READ MORE</a>
+							</p>
+						</article>
+						
+						<article class="post">
+							<h3 class="title">
+								<a href="/articles/">
+									Narrative Scrolling
+								</a>
+							</h3>
+							<p class="snippet">
+								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; Stories have always played a part in the representation of human thought.
+								Narrative Scrolling goes into connecting modern article writing with the most important and universal user interaction after clicking & tapping. …
+								<a class="read-more" href="/articles/">READ MORE</a>
+							</p>
+						</article>
+						
+						<article class="post">
+							<h3 class="title">
+								<a href="/articles/">
+									Responsive Mixed Reality Design
+								</a>
+							</h3>
+							<p class="snippet">
+								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; Taking lessons from best practices, how do we make <i>immersion</i> a continous element? …
+								<a class="read-more" href="/articles/">READ MORE</a>
+							</p>
+						</article>
+						
+						<article class="post">
+							<h3 class="title">
+								<a href="/articles/">
+									Explanation Design
+								</a>
+							</h3>
+							<p class="snippet">
+								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; From Open Source to Narrative Scrolling. Let's explore what this means for a new generation of education. …
+								<a class="read-more" href="/articles/">READ MORE</a>
+							</p>
+						</article>
+						
+						<article class="post">
+							<h3 class="title">
+								<a href="/articles/">
+									Reading Clarity
+								</a>
+							</h3>
+							<p class="snippet">
+								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; As a dyslexic, I've realised that turning my curse into a gift, I am in an awesome position of being peculiarly sensitive to reading clarity. …
+								<a class="read-more" href="/articles/">READ MORE</a>
+							</p>
+						</article>
+						
+						<article class="post">
+							<h3 class="title">
+								<a href="/articles/">
+									The Web in Depth
+								</a>
+							</h3>
+							<p class="snippet">
+								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; The real nature of the 3D Web: What's to come and what we really want. …
+								<a class="read-more" href="/articles/">READ MORE</a>
+							</p>
+						</article>
+						
+						<article class="post">
+							<h3 class="title">
+								<a href="/articles/">
+									An Ode to the Personal Site
+								</a>
+							</h3>
+							<p class="snippet">
+								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; I think personal sites have contributed more than we ever realised. Here, I will put forward why and why I want you to make your own as well. …
+								<a class="read-more" href="/articles/">READ MORE</a>
+							</p>
+						</article>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+	</div>
 	
-	<section id="introduction">
-		<p class="lead">
-			Hi, I'm <b>Martin</b>, a <em class="hint location">London</em> based
-			<em class="hint role">Web Developer</em> with a passion for <em class="hint passion humanity">humanity</em>,
-			<em class="hint passion gamedev">game development</em> and <em class="hint passion tech">technology</em>.
-		</p>
-	</section>
 	
-	<section id="articles">
-		<h2 class="title"><a href="/articles/">Articles</a></h2>
-		<ol class="links">
-			<li>
-				<a href="/articles/">
-					<span class="status">DRAFT</span>
-					<time datetime="2018">2018</time>
-					<h3>BASHing JavaScript</h3>
-				</a>
-			</li>
-			<li>
-				<a href="/articles/">
-					<span class="status">DRAFT</span>
-					<time datetime="2018">2018</time>
-					<h3>Battery Optimisation for Canvas</h3>
-				</a>
-			</li>
-			<li>
-				<a href="/articles/">
-					<span class="status">DRAFT</span>
-					<time datetime="2018">2018</time>
-					<h3>Colour Design</h3>
-				</a>
-			</li>
-			<li>
-				<a href="/articles/">
-					<span class="status">DRAFT</span>
-					<time datetime="2018">2018</time>
-					<h3>Narrative Scrolling</h3>
-				</a>
-			</li>
-			<li>
-				<a href="/articles/">
-					<span class="status">DRAFT</span>
-					<time datetime="2018">2018</time>
-					<h3>Responsive Mixed Reality Design</h3>
-				</a>
-			</li>
-			<li>
-				<a href="/articles/">
-					<span class="status">DRAFT</span>
-					<time datetime="2018">2018</time>
-					<h3>Explanation Design</h3>
-				</a>
-			</li>
-			<li>
-				<a href="/articles/">
-					<span class="status">DRAFT</span>
-					<time datetime="2018">2018</time>
-					<h3>Reading Clarity</h3>
-				</a>
-			</li>
-			<li>
-				<a href="/articles/">
-					<span class="status">DRAFT</span>
-					<time datetime="2018">2018</time>
-					<h3>The Web in Depth</h3>
-				</a>
-			</li>
-		</ol>
-	</section>
-	
-	<section id="projects">
-		<h2 class="title"><a href="/projects/">Projects</a></h2>
-		<ol class="links">
-			<li>
-				<a href="/projects/modernising-web-tooling.html">
-					<span class="status">DRAFT</span>
-					<time datetime="2018">2018</time>
-					<h3>Modernising Web Tooling</h3>
-				</a>
-			</li>
-			<li>
-				<a href="/projects/experiments.html">
-					<span class="status">DRAFT</span>
-					<time datetime="2018">2018</time>
-					<h3>Experiments</h3>
-				</a>
-			</li>
-			<li>
-				<a href="/projects/narrative-scrolling.html">
-					<span class="status">DRAFT</span>
-					<time datetime="2018">2018</time>
-					<h3>Narrative Scrolling</h3>
-				</a>
-			</li>
-		</ol>
-	</section>
-	<section id="about">
-		<h2 class="title"><a href="/about/">About Me</a></h2>
-		<blockquote class="snippet">
-			We can create a better world by understanding ourselves and others.
+
+
+
+<!--
+	<div class="scenes">
+		<nav class="map"></nav>
+		
+		<div class="scene" id="laptop">
+			<h1 class="site">
+				Martin Pitt
+			</h1>
 			
-			In my work, knowing what I am doing is meaningful is important to me; That my efforts have an impact on someone.
-		</blockquote>
-	</section>
-	<section id="work">
-		<h2 class="title"><a href="/about/#work">Work</a></h2>
-		<blockquote class="snippet">
-			Currently my occupation is as a <b>Fullstack Developer</b> at <b>The Hive Group</b>.
+			<h2 class="title">
+				Articles
+			</h2>
 			
-			The Hive Group has a philosophy to improve outcomes for patients by creating change in healthcare communications.
-		</blockquote>
-	</section>
-	<section id="contact">
-		<h2 class="title"><a href="/about/#contact">Contact</a></h2>
-		<blockquote class="snippet">
-			You can find me on Twitter as <a target="_blank" href="https://twitter.com/Nexii">@Nexii</a>.
-		</blockquote>
-	</section>
-	<footer>
-		Site is a WIP, excuse the mess :)
-	</footer>
+			<article class="post">
+				<h3 class="title">
+					<a href="/articles/">
+						BASHing JavaScript
+					</a>
+				</h3>
+				<p class="snippet">
+					<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; Like many web developers, I grew up becoming familiar with the commandline as a daily chore.
+					It is a fascinating world of little programs that take text, …
+					<a class="read-more" href="/articles/">READ MORE</a>
+				</p>
+			</article>
+			
+			<article class="post">
+				<h3 class="title">
+					<a href="/articles/">
+						Battery Optimisation for Canvas
+					</a>
+				</h3>
+				<p class="snippet">
+					<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; I love canvas animations, but I won't deny they have a huge problem
+					&mdash; they drain the batteries out of our devices. Let's explore ways of solving this…
+					<a class="read-more" href="/articles/">READ MORE</a>
+				</p>
+			</article>
+			
+			<article class="post">
+				<h3 class="title">
+					<a href="/articles/">
+						Colour Design
+					</a>
+				</h3>
+				<p class="snippet">
+					<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; I'm taking a slow approach to learning design. The topic of colour deeply fascinated me
+					in the way we feel or communicate. Here is my take on accessibility, surface area, gradients and perception. …
+					<a class="read-more" href="/articles/">READ MORE</a>
+				</p>
+			</article>
+			
+			<article class="post">
+				<h3 class="title">
+					<a href="/articles/">
+						Narrative Scrolling
+					</a>
+				</h3>
+				<p class="snippet">
+					<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; Stories have always played a part in the representation of human thought.
+					Narrative Scrolling goes into connecting modern article writing with the most important and universal user interaction after clicking & tapping. …
+					<a class="read-more" href="/articles/">READ MORE</a>
+				</p>
+			</article>
+			
+			<article class="post">
+				<h3 class="title">
+					<a href="/articles/">
+						Responsive Mixed Reality Design
+					</a>
+				</h3>
+				<p class="snippet">
+					<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; Taking lessons from best practices, how do we make <i>immersion</i> a continous element? …
+					<a class="read-more" href="/articles/">READ MORE</a>
+				</p>
+			</article>
+			
+			<article class="post">
+				<h3 class="title">
+					<a href="/articles/">
+						Explanation Design
+					</a>
+				</h3>
+				<p class="snippet">
+					<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; From Open Source to Narrative Scrolling. Let's explore what this means for a new generation of education. …
+					<a class="read-more" href="/articles/">READ MORE</a>
+				</p>
+			</article>
+			
+			<article class="post">
+				<h3 class="title">
+					<a href="/articles/">
+						Reading Clarity
+					</a>
+				</h3>
+				<p class="snippet">
+					<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; As a dyslexic, I've realised that turning my curse into a gift, I am in an awesome position of being peculiarly sensitive to reading clarity. …
+					<a class="read-more" href="/articles/">READ MORE</a>
+				</p>
+			</article>
+			
+			<article class="post">
+				<h3 class="title">
+					<a href="/articles/">
+						The Web in Depth
+					</a>
+				</h3>
+				<p class="snippet">
+					<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; The real nature of the 3D Web: What's to come and what we really want. …
+					<a class="read-more" href="/articles/">READ MORE</a>
+				</p>
+			</article>
+			
+			<article class="post">
+				<h3 class="title">
+					<a href="/articles/">
+						An Ode to the Personal Site
+					</a>
+				</h3>
+				<p class="snippet">
+					<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; I think personal sites have contributed more than we ever realised. Here, I will put forward why and why I want you to make your own as well. …
+					<a class="read-more" href="/articles/">READ MORE</a>
+				</p>
+			</article>
+		</div>
+		
+		<div class="scene" id="mobile">
+			<h2 class="title">
+				Projects
+			</h2>
+			<article class="project">
+				<h3 class="title">
+					<a href="/projects/">
+						Narrative Scrolling
+					</a>
+				</h3>
+			</article>
+			<article class="project">
+				<h3 class="title">
+					<a href="/projects/">
+						Experiments
+					</a>
+				</h3>
+			</article>
+		</div>
+		
+		<div class="scene" id="virtual-reality">
+			
+		</div>
+		
+		<div class="scene" id="portrait">
+			<p class="lead">
+				Hi, I'm <b>Martin</b>, a <em class="hint location">London</em> based
+				<em class="hint role">Web Developer</em> with a passion for <em class="hint passion humanity">humanity</em>,
+				<em class="hint passions gamedev">game development</em> and <em class="hint passion tech">technology</em>.
+			</p>
+			<p class="copy">
+				We can create a better world by understanding ourselves and others.
+			</p>
+			<p class="copy">
+				In my work, knowing what I am doing is <i>meaningful</i> is important to me; That my efforts have an impact on someone.
+			</p>
+			<p class="copy">
+				Whether inspiring you through a kickass website.
+			</p>
+			<p class="copy">
+				Or pulling the curtains to show reality: That as developers and designer we need to take a stand on ethics.
+			</p>
+			<p class="copy">
+				We make what we believe in.
+			</p>
+		</section>
+	
+	
+	< !-- 	<section id="work">
+			<h2 class="title"><a href="/about/#work">Work</a></h2>
+			<blockquote class="snippet">
+				Currently my occupation is as a <b>Fullstack Developer</b> at <b>The Hive Group</b>.
+				
+				The Hive Group has a philosophy to improve outcomes for patients by creating change in healthcare communications.
+			</blockquote>
+		</section>
+		<section id="contact">
+			<h2 class="title"><a href="/about/#contact">Contact</a></h2>
+			<blockquote class="snippet">
+				You can find me on Twitter as <a target="_blank" href="https://twitter.com/Nexii">@Nexii</a>.
+			</blockquote>
+		</section>
+		
+		<nav class="primary">
+			<a href="/">Martin Pitt</a>
+			<a href="/articles/">Articles</a>
+			<a href="/projects/">Projects</a>
+			<a href="/about/">About</a>
+		</nav> -- >
+	</div>
+-->
