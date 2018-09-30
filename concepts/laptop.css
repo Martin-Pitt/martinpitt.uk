@@ -1,0 +1,291 @@
+* {
+	box-sizing: border-box;
+	padding: unset;
+	border: unset;
+	margin: unset;
+	outline: unset;
+	color: inherit;
+	font: inherit;
+}
+
+canvas, img, video, audio {
+	display: block;
+}
+
+button, input, select {
+	unset: all;
+	display: inline-block;
+	cursor: pointer;
+}
+
+textarea {
+	border-radius: 0;
+	vertical-align: top;
+}
+
+textarea, pre {
+	overflow: auto;
+}
+
+ol, ul, li, dl, dt, dd {
+	list-style: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+hr {
+	box-sizing: content-box;
+	height: 0;
+}
+
+a, a:hover, a:active {
+	text-decoration: none;
+}
+
+b {
+	font-weight: bolder;
+}
+
+i {
+	font-style: italic;
+}
+
+svg {
+	overflow: visible;
+	fill: currentColor;
+}
+
+/* Consistent superscript/subscript */
+sup, sub {
+	position: relative;
+	vertical-align: middle;
+	font-size: 58.3%;
+	line-height: 0;
+}
+
+/* ~33.3% up or down for superscript and subscript; You may need to adjust for custom fonts */
+sup {
+	top: -0.33333em;
+}
+sub {
+	top: 0.33333em;
+}
+
+
+:root {
+	--light: hsl(0, 0%, 90%);
+	--dark: hsl(0, 0%, 20%);
+	--primary: hsl(20, 73%, 41%);
+}
+
+
+
+html {
+	font: 20px/1.5 sans-serif;
+	font-size: calc(1em + 1vw);
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: subpixel-antialiased;
+	text-overflow: ellipsis;
+	background-color: hsl(0, 0%, 90%);
+	background-color: var(--light);
+	color: hsl(0, 0%, 20%);
+	color: var(--dark);
+}
+
+body {
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+p, blockquote {
+	/* white-space: pre-line; */
+}
+
+
+
+
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+}
+
+
+
+body::after {
+	content: '';
+	position: absolute;
+	top: 41.2%;
+	left: 50%;
+	width: 350px;
+	height: 546px;
+/* 	background: url(/assets/aleksi-tappura-370-unsplash.jpg) 47% 50% / cover no-repeat; */
+	transform: translate(-50%, -50%);
+	opacity: 0.2;
+	pointer-events: none;
+}
+
+
+.laptop {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	border-radius: calc(62/100 * 5%) / 5%;
+	background-color: #eaeaea;
+	background-image: radial-gradient(90% 70% at 30% 10%, hsl(0, 0%, 94%) 30%, hsl(0, 0%, 92%) 100%);
+	box-shadow: 0 2px 3px -1px hsla(0, 0%, 0%, 0.1);
+	perspective: 1400px;
+	transform-style: preserve-3d;
+	transform: translate(-50%, -50%);
+}
+
+.laptop::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 12%;
+	right: 12%;
+	height: 4.25%;
+	background-color: #4c4c4c;
+	box-shadow: inset 0 -2px 3px 1px hsla(0, 0%, 0%, 0.4);
+}
+
+.laptop::after {
+	content: '';
+	display: block;
+	width: 100%;
+	padding-top: 62%;
+}
+
+.screen {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 100%;
+	height: 100%;
+	padding: 20px 25px;
+	padding: 6.5% 8.5%;
+	border-radius: inherit;
+	background-color: #eaeaea;
+	background-image: radial-gradient(90% 70% at 50% 35%, hsl(0, 0%, 94%) 30%, hsl(0, 0%, 92%) 100%);
+	transform-style: preserve-3d;
+	transform-origin: bottom;
+	transform: rotateX(-180deg) translateZ(-2px);
+	transition: transform 400ms ease-in-out;
+}
+
+.laptop:hover .screen {
+	transform: rotateX(-41deg) translateZ(-2px);
+}
+
+.screen::after {
+	content: '';
+	position: absolute;
+	top: 10.4875%;
+	left: 8.5%;
+	right: 8.5%;
+	bottom: 10.4875%;
+	backface-visibility: hidden;
+	box-shadow: inset 0 -0.5px 2px hsla(0, 0%, 0%, 0.3);
+	pointer-events: none;
+}
+
+.keyboard {
+	position: absolute;
+	top: 6.5%;
+	left: 5%;
+	right: 5%;
+	height: 53%;
+	background-color: hsla(0, 0%, 0%, 0.01);
+	border-radius: 3% / 4%;
+	box-shadow: inset -0.5px 0 3px hsla(0, 0%, 0%, 0.1);
+	transform-style: preserve-3d;
+}
+
+.keyboard::before,
+.keyboard::after {
+	content: '';
+	position: absolute;
+	top: 2.5%;
+	bottom: 2.5%;
+	width: 4.5%;
+	background: radial-gradient(1px, hsla(0, 0%, 0%, 0.1) 40%, transparent 60%);
+	background-size: 2px 2px;
+}
+
+.keyboard::before {
+	right: 100.5%;
+}
+
+.keyboard::after {
+	left: 100.5%;
+}
+
+.trackpad {
+	position: absolute;
+	left: 33%;
+	right: 33%;
+	bottom: 2.5%;
+	height: 33%;
+	background-color: hsla(0, 0%, 0%, 0.01);
+	border-radius: 3% / 4%;
+	box-shadow: inset -0.5px 0 1px hsla(0, 0%, 0%, 0.1);
+	transform-style: preserve-3d;
+}
+
+.operating-system {
+	width: 100%;
+	height: 100%;
+	background-color: hsl(0, 0%, 49%);
+	background-image: linear-gradient(to bottom, hsl(0, 0%, 100%) 3.5%, hsl(30, 100%, 80%) 0, 25%, hsl(215, 100%, 80%));
+	transform-style: preserve-3d;
+	backface-visibility: hidden;
+}
+
+.browser {
+	position: absolute;
+	top: 10%;
+	left: 10%;
+	width: 80%;
+	height: 80%;
+	padding-top: 3%;
+	border-radius: 1%;
+	background-color: hsl(0, 0%, 95%);
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
+}
+
+.tab {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-bottom-left-radius: inherit;
+	border-bottom-right-radius: inherit;
+	background-color: white;
+	transform-style: preserve-3d;
+}
+
+iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 800%;
+	height: 800%;
+	transform: scale(0.125);
+	transform-origin: top left;
+}
+
+
+
+
+
