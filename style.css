@@ -109,38 +109,8 @@ p, blockquote {
 
 
 
-section {
-	display: grid;
-	grid-auto-columns: minmax(auto, 980px);
-	justify-content: center;
-	padding: 60px 4vw;
-}
 
 
-h1.title {
-	font-size: 160%;
-}
-
-h2.title {
-	font-size: 130%;
-}
-
-h2.title a {
-
-}
-
-h2.title a:hover {
-	opacity: 0.7;
-}
-
-h2.title a:active {
-	opacity: 0.9;
-}
-
-
-p.lead {}
-
-blockquote.snippet {}
 
 
 
@@ -155,7 +125,6 @@ body {
 
 
 
-
 .scenes {
 	position: fixed;
 	left: 0;
@@ -163,179 +132,283 @@ body {
 	bottom: 0;
 	z-index: 1;
 	height: 800vh;
-	outline: 10px solid red;
+	outline: 10px solid hsla(0, 100%, 50%, 0.1);
 	transform-style: preserve-3d;
 	transform-origin: bottom;
 	transform:
 		perspective(1000px)
 		rotateX(60deg)
 		translateY(100%)
-		translateY(0vh)
-		translateY(calc(var(--position) * -1px));
+		translateY(calc(var(--position, 0) * -1px));
 }
 
 .scene {
 	transform-style: preserve-3d;
 }
 
-.device {
-	background: white;
-}
-
-.browser {
-	border-radius: 4px;
-	background-color: hsl(0, 0%, 90%);
-	box-shadow: 0 10px 60px hsla(0, 0%, 0%, 0.2);
-}
-
-.browser::before {
-	content: '';
-	height: 40px;
-}
-
-.tab {
-	overflow-x: hidden;
-	overflow-y: scroll;
-	height: 100vh;
-	padding: 20px 40px;
-	background-color: white;
-}
 
 
-#scene-one {
-	height: 600px;
-	transform: translateY(-100%);
-}
 
-#scene-one .device {
+
+.laptop {
 	position: absolute;
-	bottom: 0;
-	transform-origin: bottom;
-	transform: rotateX(-60deg);
+	top: 0%;
+	left: 50%;
+	width: calc(100 / 38 * 100vmax);
+	border-radius: calc(62/100 * 5%) / 5%;
+	background-color: #eaeaea;
+	background-image: radial-gradient(90% 70% at 30% 10%, hsl(0, 0%, 94%) 30%, hsl(0, 0%, 92%) 100%);
+	box-shadow: 0 2px 3px -1px hsla(0, 0%, 0%, 0.1);
+	/* 	perspective: 1400px; */
+	transform-style: preserve-3d;
+	transform: translate(-50%, 0%) translateZ(calc(-0.2 * 99vmax));
 }
 
+.laptop::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 12%;
+	right: 12%;
+	height: 4.25%;
+	background-color: #4c4c4c;
+	box-shadow: inset 0 -2px 3px 1px hsla(0, 0%, 0%, 0.4);
+}
 
+.laptop::after {
+	content: '';
+	display: block;
+	width: 100%;
+	padding-top: 62%;
+}
 
-
-
-
-/* 
-.scenes {
-	position: fixed;
+.screen {
+	position: absolute;
 	left: 0;
 	right: 0;
-	bottom: 0;
-	z-index: 1;
-	height: 600vh;
-	outline: 10px solid red;
+	bottom: 100%;
+	height: 100%;
+	padding: 20px 25px;
+	padding: 6.5% 8.5%;
+	border-radius: inherit;
+	background-color: #eaeaea;
+	background-image: radial-gradient(90% 70% at 50% 35%, hsl(0, 0%, 94%) 30%, hsl(0, 0%, 92%) 100%);
 	transform-style: preserve-3d;
 	transform-origin: bottom;
-	transform:
-		perspective(1000px)
-		rotateX(60deg)
-		translateY(100%)
-		translateY(0vh)
-		translateY(calc(var(--position) * -1px));
+	transform: rotateX(-180deg) translateZ(-2px);
+	transition: transform 400ms ease-in-out;
 }
 
-.scene {
+.laptop .screen {
+	transform: rotateX(-60deg) translateZ(-2px);
+}
+
+.screen::after {
+	content: '';
+	position: absolute;
+	top: 10.4875%;
+	left: 8.5%;
+	right: 8.5%;
+	bottom: 10.4875%;
+	backface-visibility: hidden;
+	box-shadow: inset 0 -0.5px 2px hsla(0, 0%, 0%, 0.3);
+	pointer-events: none;
+}
+
+.keyboard {
+	position: absolute;
+	top: 6.5%;
+	left: 5%;
+	right: 5%;
+	height: 53%;
+	background-color: hsla(0, 0%, 0%, 0.01);
+	border-radius: 3% / 4%;
+	box-shadow: inset -0.5px 0 3px hsla(0, 0%, 0%, 0.1);
 	transform-style: preserve-3d;
 }
 
-#scene-one {
-	position: relative;
-	width: 100vw;
-	height: 100vh;
-	transform-origin: top;
-	transform: rotateX(-60deg) translateY(-100%);
+.keyboard::before,
+.keyboard::after {
+	content: '';
+	position: absolute;
+	top: 2.5%;
+	bottom: 2.5%;
+	width: 4.5%;
+	background: radial-gradient(4px, hsla(0, 0%, 0%, 0.1) 40%, transparent 60%);
+	background-size: 9px 9px;
 }
 
-#scene-one .background {
-	position: absolute;
-	top: 40%;
-	left: 50%;
-	right: 0;
-	bottom: 0;
-	width: 450vmax;
-	height: 300vmax;
-	background: url(assets/pankaj-patel-543570-unsplash.jpg) no-repeat;
-	background-size: cover;
-	background-position: -2.1vmax -5.0vmax;
-	transform: translate(-50%, -50%);
+.keyboard::before {
+	right: 100.5%;
 }
 
-#laptop {
+.keyboard::after {
+	left: 100.5%;
+}
+
+.trackpad {
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 214vmax;
-	height: 109vmax;
-	background-color: hsla(0, 0%, 100%, 1.2);
-	box-shadow: 0 0 0 5px white;
-	transform: translate(-50%, -50%);
+	left: 33%;
+	right: 33%;
+	bottom: 2.5%;
+	height: 33%;
+	background-color: hsla(0, 0%, 0%, 0.01);
+	border-radius: 3% / 4%;
+	box-shadow: inset -0.5px 0 1px hsla(0, 0%, 0%, 0.1);
+	transform-style: preserve-3d;
+}
+
+.operating-system {
+	width: 100%;
+	height: 100%;
+	background-color: hsl(0, 0%, 49%);
+	background-image: linear-gradient(to bottom, hsl(0, 0%, 100%) 3.5%, hsl(30, 100%, 80%) 0, 25%, hsl(215, 100%, 80%));
+	transform-style: preserve-3d;
+	transform: translateZ(1px);
+	backface-visibility: hidden;
 }
 
 .browser {
 	position: absolute;
-	top: 50%;
+	top: 100%;
 	left: 50%;
+	width: calc(100vw + 7.6%);
 	width: 100vw;
 	height: 100vh;
-	background-color: hsla(0, 0%, 0%, 0.5);
-	transform: translate(-50%, -50%);
+	/* padding-top: 3%; */
+	border-radius: 4px;
+	background-color: hsl(0, 0%, 95%);
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
+	transform: translate3d(-50%, -100%, 1px);
 }
 
 .tab {
-	overflow-x: hidden;
-	overflow-y: scroll;
-	background-color: rgba(255, 255, 255, 0.17);
-	color: white;
-	opacity: 0.2;
+	position: relative;
+	display: grid;
+	grid-auto-columns: minmax(auto, 800px);
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	overflow-x: scroll;
+	padding: 60px 4vw;
+	border-bottom-left-radius: inherit;
+	border-bottom-right-radius: inherit;
+	background-color: white;
+	transform-style: preserve-3d;
 }
 
+
+
+
+
+
+
+
+#scene-one {
+	height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+h1.site {
+	font-size: 160%;
+}
+
+h2.title {
+	font-size: 140%;
+}
+
+h3.title {margin-bottom: 10px;}
 
 article.post {
+	margin: 10px 0;
+}
+
+blockquote.snippet {
+	font-size: 60%;
+}
+
+blockquote.snippet span.status {
 	
 }
- */
 
-/* @supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
-	html, body {
-		overflow: hidden;
-		height: 100%;
-	}
+blockquote.snippet time {
 	
-	body {
-		transform: translateZ(0px);
-	}
-	
-	.scenes {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		overflow-x: hidden;
-		overflow-y: auto;
-		perspective: 1000px;
-		scroll-behavior: smooth;
-		transform-style: preserve-3d;
-		transform: perspective(1000px) rotateX(60deg);
-	}
-	.scene {
-		transform-style: preserve-3d;
-	}
-	
-	#laptop {}
-	article.post {
-		transform-style: preserve-3d;
-		transform: rotateX(20deg);
-	}
-	
-	.layer {
-		position: absolute;
-		backface-visibility: hidden;
-		transform-origin: bottom;
-	}
-} */
+}
+
+article.post a.link {
+	position: relative;
+	display: inline-block;
+	padding: 2px 4px;
+	margin: -2px -4px;
+	border-radius: 2px;
+/* 	background-color: black;
+	color: white; */
+}
+
+article.post a.link::after {
+	content: '';
+	position: absolute;
+	left: 4px;
+	right: 4px;
+	bottom: 3px;
+	border-bottom: 2px solid hsla(0, 0%, 0%, 0.1);
+}
+
+article.post a.link:hover {
+	background-color: hsla(0, 0%, 0%, 0.05);
+}
+
+article.post a.link:active {
+	top: 1px;
+	box-shadow: inset 0 1px 1px hsla(0, 0%, 0%, 0.2);
+	background-color: hsla(0, 0%, 0%, 0.15);
+}
+
+
+
+
+
+p.lead {}
+
+
+
+section {
+	display: grid;
+	grid-auto-columns: minmax(auto, 980px);
+	justify-content: center;
+	padding: 60px 4vw;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -347,19 +420,7 @@ article.post {
 
 .tiles {}
 
-.tile {
-/* 	padding: 20px;
-	border-radius: 6px;
-	border: 4px solid transparent;
-	background: hsl(0, 0%, 96%); */
-	
-/* 	box-shadow: 0 1px 0px 0px hsla(0, 0%, 0%, 0.2); */
-	
-/* 	background: #de4d16;
-	color: white;
-	font-weight: bold;
-	letter-spacing: 0.05em; */
-}
+.tile {}
 
 
 
@@ -388,6 +449,8 @@ article.post {
 em.hint {
 	font-weight: bolder;
 }
+
+
 
 /* .hint {
 	position: relative;

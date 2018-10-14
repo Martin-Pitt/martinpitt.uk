@@ -128,16 +128,29 @@
 	</script>
 	<script>
 		var scenes;
+		var lastScroll = -1;
 		function scrollRender(event) {
 			requestAnimationFrame(scrollRender);
 			
 			if(!document.scrollingElement) return;
 			if(!scenes) return scenes = document.querySelector('.scenes');
 			
-			scenes.style.setProperty('--position', document.scrollingElement.scrollTop);
+			var scroll = document.scrollingElement.scrollTop;
+			if(scroll === lastScroll) return;
+			lastScroll = scroll;
+			
+			scenes.style.setProperty('--position', lastScroll = scroll);
 		}
 		
 		scrollRender();
+		
+		window.addEventListener('scroll', (event) => {
+			var scroll = document.scrollingElement.scrollTop;
+			if(scroll === lastScroll) return;
+			lastScroll = scroll;
+			
+			scenes.style.setProperty('--position', lastScroll = scroll);
+		}, { passive: false });
 	</script>
 	<link rel="stylesheet" href="/style.css">
 
@@ -147,143 +160,149 @@
 <body>
 	<div class="scenes">
 		<div id="scene-one" class="scene">
-			<div class="device">
-				<div class="browser">
-					<div class="tab">
-						<h1 class="site">
-							Martin Pitt
-						</h1>
-						
-						<h2 class="title">
-							Articles
-						</h2>
-
-						<article class="post">
-							<h3 class="title">
-								<a href="/articles/">
-									Concentric Styling Design
-								</a>
-							</h3>
-							<p class="snippet">
-								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; Over time the way you write css becomes meaningful and natural.
-								This is because as a developer you end up with a vague mental model of all the properties, let's try write that down …
-								<a class="read-more" href="/articles/">READ MORE</a>
-							</p>
-						</article>
-						
-						<article class="post">
-							<h3 class="title">
-								<a href="/articles/">
-									BASHing JavaScript
-								</a>
-							</h3>
-							<p class="snippet">
-								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; Like many web developers, I grew up becoming familiar with the commandline as a daily chore.
-								It is a fascinating world of little programs that take text, …
-								<a class="read-more" href="/articles/">READ MORE</a>
-							</p>
-						</article>
-						
-						<article class="post">
-							<h3 class="title">
-								<a href="/articles/">
-									Battery Optimisation for Canvas
-								</a>
-							</h3>
-							<p class="snippet">
-								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; I love canvas animations, but I won't deny they have a huge problem
-								&mdash; they drain the batteries out of our devices. Let's explore ways of solving this…
-								<a class="read-more" href="/articles/">READ MORE</a>
-							</p>
-						</article>
-						
-						<article class="post">
-							<h3 class="title">
-								<a href="/articles/">
-									Colour Design
-								</a>
-							</h3>
-							<p class="snippet">
-								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; I'm taking a slow approach to learning design. The topic of colour deeply fascinated me
-								in the way we feel or communicate. Here is my take on accessibility, surface area, gradients and perception. …
-								<a class="read-more" href="/articles/">READ MORE</a>
-							</p>
-						</article>
-						
-						<article class="post">
-							<h3 class="title">
-								<a href="/articles/">
-									Narrative Scrolling
-								</a>
-							</h3>
-							<p class="snippet">
-								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; Stories have always played a part in the representation of human thought.
-								Narrative Scrolling goes into connecting modern article writing with the most important and universal user interaction after clicking & tapping. …
-								<a class="read-more" href="/articles/">READ MORE</a>
-							</p>
-						</article>
-						
-						<article class="post">
-							<h3 class="title">
-								<a href="/articles/">
-									Responsive Mixed Reality Design
-								</a>
-							</h3>
-							<p class="snippet">
-								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; Taking lessons from best practices, how do we make <i>immersion</i> a continous element? …
-								<a class="read-more" href="/articles/">READ MORE</a>
-							</p>
-						</article>
-						
-						<article class="post">
-							<h3 class="title">
-								<a href="/articles/">
-									Explanation Design
-								</a>
-							</h3>
-							<p class="snippet">
-								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; From Open Source to Narrative Scrolling. Let's explore what this means for a new generation of education. …
-								<a class="read-more" href="/articles/">READ MORE</a>
-							</p>
-						</article>
-						
-						<article class="post">
-							<h3 class="title">
-								<a href="/articles/">
-									Reading Clarity
-								</a>
-							</h3>
-							<p class="snippet">
-								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; As a dyslexic, I've realised that turning my curse into a gift, I am in an awesome position of being peculiarly sensitive to reading clarity. …
-								<a class="read-more" href="/articles/">READ MORE</a>
-							</p>
-						</article>
-						
-						<article class="post">
-							<h3 class="title">
-								<a href="/articles/">
-									The Web in Depth
-								</a>
-							</h3>
-							<p class="snippet">
-								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; The real nature of the 3D Web: What's to come and what we really want. …
-								<a class="read-more" href="/articles/">READ MORE</a>
-							</p>
-						</article>
-						
-						<article class="post">
-							<h3 class="title">
-								<a href="/articles/">
-									An Ode to the Personal Site
-								</a>
-							</h3>
-							<p class="snippet">
-								<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; I think personal sites have contributed more than we ever realised. Here, I will put forward why and why I want you to make your own as well. …
-								<a class="read-more" href="/articles/">READ MORE</a>
-							</p>
-						</article>
+			<div class="laptop">
+				<div class="screen">
+					<div class="operating-system">
+						<div class="browser">
+							<div class="tab">
+								<h1 class="site">
+									Martin Pitt
+								</h1>
+								
+								<h2 class="title">
+									Articles
+								</h2>
+								
+								<article class="post">
+									<h3 class="title">
+										<a class="link" href="/articles/">
+											Concentric Styling Design
+										</a>
+									</h3>
+									<blockquote class="snippet">
+										<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; Over time the way you write css becomes meaningful and natural.
+										This is because as a developer you end up with a vague mental model of all the properties, let's try write that down …
+										<a class="link read-more" href="/articles/">READ MORE</a>
+									</blockquote>
+								</article>
+								
+								<article class="post">
+									<h3 class="title">
+										<a class="link" href="/articles/">
+											BASHing JavaScript
+										</a>
+									</h3>
+									<blockquote class="snippet">
+										<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; Like many web developers, I grew up becoming familiar with the commandline as a daily chore.
+										It is a fascinating world of little programs that take text, …
+										<a class="link read-more" href="/articles/">READ MORE</a>
+									</blockquote>
+								</article>
+								
+								<article class="post">
+									<h3 class="title">
+										<a class="link" href="/articles/">
+											Battery Optimisation for Canvas
+										</a>
+									</h3>
+									<blockquote class="snippet">
+										<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; I love canvas animations, but I won't deny they have a huge problem
+										&mdash; they drain the batteries out of our devices. Let's explore ways of solving this…
+										<a class="link read-more" href="/articles/">READ MORE</a>
+									</blockquote>
+								</article>
+								
+								<article class="post">
+									<h3 class="title">
+										<a class="link" href="/articles/">
+											Colour Design
+										</a>
+									</h3>
+									<blockquote class="snippet">
+										<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; I'm taking a slow approach to learning design. The topic of colour deeply fascinated me
+										in the way we feel or communicate. Here is my take on accessibility, surface area, gradients and perception. …
+										<a class="link read-more" href="/articles/">READ MORE</a>
+									</blockquote>
+								</article>
+								
+								<article class="post">
+									<h3 class="title">
+										<a class="link" href="/articles/">
+											Narrative Scrolling
+										</a>
+									</h3>
+									<blockquote class="snippet">
+										<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; Stories have always played a part in the representation of human thought.
+										Narrative Scrolling goes into connecting modern article writing with the most important and universal user interaction after clicking & tapping. …
+										<a class="link read-more" href="/articles/">READ MORE</a>
+									</blockquote>
+								</article>
+								
+								<article class="post">
+									<h3 class="title">
+										<a class="link" href="/articles/">
+											Responsive Mixed Reality Design
+										</a>
+									</h3>
+									<blockquote class="snippet">
+										<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; Taking lessons from best practices, how do we make <i>immersion</i> a continous element? …
+										<a class="link read-more" href="/articles/">READ MORE</a>
+									</blockquote>
+								</article>
+								
+								<article class="post">
+									<h3 class="title">
+										<a class="link" href="/articles/">
+											Explanation Design
+										</a>
+									</h3>
+									<blockquote class="snippet">
+										<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; From Open Source to Narrative Scrolling. Let's explore what this means for a new generation of education. …
+										<a class="link read-more" href="/articles/">READ MORE</a>
+									</blockquote>
+								</article>
+								
+								<article class="post">
+									<h3 class="title">
+										<a class="link" href="/articles/">
+											Reading Clarity
+										</a>
+									</h3>
+									<blockquote class="snippet">
+										<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; As a dyslexic, I've realised that turning my curse into a gift, I am in an awesome position of being peculiarly sensitive to reading clarity. …
+										<a class="link read-more" href="/articles/">READ MORE</a>
+									</blockquote>
+								</article>
+								
+								<article class="post">
+									<h3 class="title">
+										<a class="link" href="/articles/">
+											The Web in Depth
+										</a>
+									</h3>
+									<blockquote class="snippet">
+										<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; The real nature of the 3D Web: What's to come and what we really want. …
+										<a class="link read-more" href="/articles/">READ MORE</a>
+									</blockquote>
+								</article>
+								
+								<article class="post">
+									<h3 class="title">
+										<a class="link" href="/articles/">
+											An Ode to the Personal Site
+										</a>
+									</h3>
+									<blockquote class="snippet">
+										<span class="status">DRAFT</span> <time datetime="2018">2018</time> &mdash; I think personal sites have contributed more than we ever realised. Here, I will put forward why and why I want you to make your own as well. …
+										<a class="link read-more" href="/articles/">READ MORE</a>
+									</blockquote>
+								</article>
+							</div>
+						</div>
 					</div>
 				</div>
+				<div class="keyboard"></div>
+				<div class="trackpad"></div>
 			</div>
 		</div>
 		
