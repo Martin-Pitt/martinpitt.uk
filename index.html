@@ -247,36 +247,6 @@
 			
 			let scenePosition = Math.max(0, scroll - endOfArticleScroll);
 			scenes.style.setProperty('--position', scenePosition);
-			
-			
-			
-			/*
-			if(scroll < endOfArticleScroll())
-			{
-				articles.scrollTop = scroll;
-				scenes.style.setProperty('--position', 0);
-				laptop.style.setProperty('--screen-rotation', `120deg`);
-			}
-			
-			else
-			{
-				articles.scrollTop = endOfArticleScroll();
-				
-				scenes.style.setProperty('--position', scroll - endOfArticleScroll());
-				
-				
-				if(scroll < endOfArticleScroll() + laptopCloseDistance)
-				{
-					var t = Math.max(0, Math.min(1, (laptopCloseDistance - (scroll - endOfArticleScroll())) / laptopCloseDistance));
-					laptop.style.setProperty('--screen-rotation', `${t * 120}deg`);
-				}
-				
-				else
-				{
-					laptop.style.setProperty('--screen-rotation', `0deg`);
-				}
-			}
-			*/
 		}
 		
 		
@@ -297,10 +267,10 @@
 
 <body>
 	<header class="global">
-		<h1>Martin Pitt</h1>
-		<a>Articles</a>
-		<a>Projects</a>
-		<a>About</a>
+		<h1 class="item name"><a href="">Martin Pitt</a></h1>
+		<a class="item link" href="">Articles</a>
+		<a class="item link" href="">Projects</a>
+		<a class="item link" href="">About</a>
 	</header>
 	
 	<div class="scenes">
