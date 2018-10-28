@@ -76,8 +76,8 @@ sub {
 
 
 :root {
-	--light: hsl(0, 0%, 90%);
-	--dark: hsl(0, 0%, 20%);
+	--light: hsl(20, 10%, 70%);
+	--dark: hsl(20, 20%, 20%);
 	--primary: hsl(20, 73%, 41%);
 }
 
@@ -91,9 +91,7 @@ html {
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: subpixel-antialiased;
 	text-overflow: ellipsis;
-	background-color: hsl(0, 0%, 90%);
 	background-color: var(--light);
-	color: hsl(0, 0%, 20%);
 	color: var(--dark);
 }
 
@@ -102,49 +100,62 @@ body {
 	overflow-y: scroll;
 }
 
-p, blockquote {
-	/* white-space: pre-line; */
+
+
+
+
+
+
+
+
+
+html {
+	position: relative;
+	height: 100%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 body {
-	height: 600vh;
+	height: 600%;
 }
+
+
+header.global {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 60px;
+}
+
 
 
 
 
 .scenes {
 	position: fixed;
+	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	z-index: 1;
-	height: 800vh;
-	outline: 10px solid hsla(0, 100%, 50%, 0.1);
-	transform-style: preserve-3d;
-	transform-origin: bottom;
-	transform:
-		perspective(1000px)
-		rotateX(60deg)
-		translateY(100%)
-		translateY(calc(var(--position, 0) * -1px));
+	overflow: hidden;
+	perspective: 1000px;
 }
 
 .scene {
+	transform-origin: bottom;
+	transform: rotateX(60deg) translateY(calc(100% + var(--position, 0) * -1px));
 	transform-style: preserve-3d;
 }
+
+
+#scene-one {
+	height: 100%;
+}
+
+
+
+
 
 
 
@@ -152,16 +163,17 @@ body {
 
 .laptop {
 	position: absolute;
-	top: 0%;
-	left: 50%;
-	width: calc(100 / 38 * 100vmax);
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: 0 calc((100 / (100 - 8.5 * 2) - 1) * -50%);
 	border-radius: calc(62/100 * 5%) / 5%;
 	background-color: #eaeaea;
 	background-image: radial-gradient(90% 70% at 30% 10%, hsl(0, 0%, 94%) 30%, hsl(0, 0%, 92%) 100%);
 	box-shadow: 0 2px 3px -1px hsla(0, 0%, 0%, 0.1);
-	/* 	perspective: 1400px; */
 	transform-style: preserve-3d;
-	transform: translate(-50%, 0%) translateZ(calc(-0.2 * 99vmax));
+	transform: translate(0%, 0%);
+	--screen-rotation: 120deg;
 }
 
 .laptop::before {
@@ -188,19 +200,18 @@ body {
 	right: 0;
 	bottom: 100%;
 	height: 100%;
-	padding: 20px 25px;
 	padding: 6.5% 8.5%;
 	border-radius: inherit;
 	background-color: #eaeaea;
 	background-image: radial-gradient(90% 70% at 50% 35%, hsl(0, 0%, 94%) 30%, hsl(0, 0%, 92%) 100%);
 	transform-style: preserve-3d;
 	transform-origin: bottom;
-	transform: rotateX(-180deg) translateZ(-2px);
-	transition: transform 400ms ease-in-out;
+	transform: rotateX(-180deg) translateZ(-1px);
+	/* 	transition: transform 400ms ease-in-out; */
 }
 
 .laptop .screen {
-	transform: rotateX(-60deg) translateZ(-2px);
+	transform: rotateX(calc(-180deg + var(--screen-rotation, 0deg))) translateZ(-1px);
 }
 
 .screen::after {
@@ -210,8 +221,9 @@ body {
 	left: 8.5%;
 	right: 8.5%;
 	bottom: 10.4875%;
-	backface-visibility: hidden;
+	transform: translateZ(2px);
 	box-shadow: inset 0 -0.5px 2px hsla(0, 0%, 0%, 0.3);
+	backface-visibility: hidden;
 	pointer-events: none;
 }
 
@@ -255,32 +267,30 @@ body {
 	background-color: hsla(0, 0%, 0%, 0.01);
 	border-radius: 3% / 4%;
 	box-shadow: inset -0.5px 0 1px hsla(0, 0%, 0%, 0.1);
-	transform-style: preserve-3d;
 }
 
 .operating-system {
 	width: 100%;
 	height: 100%;
-	background-color: hsl(0, 0%, 49%);
-	background-image: linear-gradient(to bottom, hsl(0, 0%, 100%) 3.5%, hsl(30, 100%, 80%) 0, 25%, hsl(215, 100%, 80%));
-	transform-style: preserve-3d;
-	transform: translateZ(1px);
+	background-color: hsl(0, 0%, 69%);
+/* 	background-image: linear-gradient(to bottom, hsl(0, 0%, 100%) 3.5%, hsl(30, 100%, 80%) 0, 25%, hsl(215, 100%, 80%)); */
+	background-image: linear-gradient(to bottom, hsl(0, 0%, 0%) 3.5%, hsl(30, 10%, 80%) 0, 75%, hsl(215, 10%, 80%));
 	backface-visibility: hidden;
+	transform-style: preserve-3d;
+	transform: translateZ(2px);
 }
 
 .browser {
 	position: absolute;
-	top: 100%;
+	top: 50%;
 	left: 50%;
-	width: calc(100vw + 7.6%);
-	width: 100vw;
-	height: 100vh;
-	/* padding-top: 3%; */
+	width: 95%;
+	height: 85%;
+	padding-top: 20px;
 	border-radius: 4px;
 	background-color: hsl(0, 0%, 95%);
-	backface-visibility: hidden;
 	transform-style: preserve-3d;
-	transform: translate3d(-50%, -100%, 1px);
+	transform: translate3d(-50%, -50%, 1px);
 }
 
 .tab {
@@ -288,9 +298,9 @@ body {
 	display: grid;
 	grid-auto-columns: minmax(auto, 800px);
 	justify-content: center;
+	overflow: hidden;
 	width: 100%;
 	height: 100%;
-	overflow-x: scroll;
 	padding: 60px 4vw;
 	border-bottom-left-radius: inherit;
 	border-bottom-right-radius: inherit;
@@ -299,15 +309,6 @@ body {
 }
 
 
-
-
-
-
-
-
-#scene-one {
-	height: 100vh;
-}
 
 
 
