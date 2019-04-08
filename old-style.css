@@ -1,0 +1,582 @@
+* {
+	box-sizing: border-box;
+	padding: unset;
+	border: unset;
+	margin: unset;
+	outline: unset;
+	color: inherit;
+	font: inherit;
+}
+
+canvas, img, video, audio {
+	display: block;
+}
+
+button, input, select {
+	unset: all;
+	display: inline-block;
+	cursor: pointer;
+}
+
+textarea {
+	border-radius: 0;
+	vertical-align: top;
+}
+
+textarea, pre {
+	overflow: auto;
+}
+
+ol, ul, li, dl, dt, dd {
+	list-style: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+hr {
+	box-sizing: content-box;
+	height: 0;
+}
+
+a, a:hover, a:active {
+	text-decoration: none;
+}
+
+b {
+	font-weight: bolder;
+}
+
+i {
+	font-style: italic;
+}
+
+svg {
+	overflow: visible;
+	fill: currentColor;
+}
+
+/* Consistent superscript/subscript */
+sup, sub {
+	position: relative;
+	vertical-align: middle;
+	font-size: 58.3%;
+	line-height: 0;
+}
+
+/* ~33.3% up or down for superscript and subscript; You may need to adjust for custom fonts */
+sup {
+	top: -0.33333em;
+}
+sub {
+	top: 0.33333em;
+}
+
+
+:root {
+	--light: hsl(20, 10%, 70%);
+	--dark: hsl(20, 20%, 20%);
+	--primary: hsl(20, 73%, 41%);
+}
+
+
+
+html {
+	font: 20px/1.5 sans-serif;
+	font-size: calc(1em + 1vw);
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: subpixel-antialiased;
+	text-overflow: ellipsis;
+	background-color: var(--light);
+	color: var(--dark);
+}
+
+body {
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+
+
+
+
+
+
+
+
+
+html {
+	position: relative;
+	height: 100%;
+}
+
+body {
+	height: 600%;
+}
+
+
+header.global {
+	position: fixed;
+	top: 0;
+	left: 2.5%;
+	right: 2.5%;
+	z-index: 2;
+	display: flex;
+	margin: 0 -20px;
+	color: white;
+	font-size: 80%;
+	text-shadow: 0 1px hsla(0, 0%, 0%, 0.2);
+}
+
+header.global .item {
+	flex: 0 0 auto;
+}
+
+header.global .name {
+	margin-right: auto;
+}
+
+header.global .name a {
+	display: block;
+	padding: 10px 20px;
+}
+
+header.global .link {
+	padding: 10px 20px;
+}
+
+
+
+
+
+.scenes {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	overflow: hidden;
+	perspective: 1000px;
+}
+
+.scene {
+	transform-style: preserve-3d;
+}
+
+
+#scene-one {
+	height: 100vmin;
+	transform-origin: bottom;
+	transform: translateY(-0vw) rotateX(60deg) translateY(calc(100% + var(--position, 0) * -1px));
+}
+
+
+
+
+
+
+
+
+
+.laptop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: 0% calc((100 / (100 - 8.5 * 2) - 1) * -50%) 0;
+	border-radius: calc(62/100 * 5%) / 5%;
+	background-color: hsl(0, 0%, 80%);
+	background-image: 
+		linear-gradient(hsla(215, 100%, 57%, 0.09) 0%, 5%, transparent 100%),
+		radial-gradient(50% 40% at 50% 10%, hsla(215, 100%, 87%, 0.6) 0%, 20%, transparent 100%),
+		radial-gradient(120% 80% at 40% 40%, hsl(215, 15%, 89%) 30%, hsl(0, 0%, 79%) 100%);
+	background-size: 85% 42%, auto, auto;
+	background-position: 50% 14%, top, top;
+	background-repeat: no-repeat;
+	box-shadow: 0 2px 3px -1px hsla(0, 0%, 0%, 0.1);
+	transform-style: preserve-3d;
+	--screen-rotation: 120deg;
+}
+
+.laptop::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 12%;
+	right: 12%;
+	height: 4.25%;
+	background-color: hsl(0, 0%, 30%);
+	box-shadow: inset 0 -2px 3px 1px hsla(0, 0%, 0%, 0.4);
+}
+
+.laptop::after {
+	content: '';
+	display: block;
+	width: 100%;
+	padding-top: 62%;
+}
+
+.screen {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 100%;
+	height: 100%;
+	padding: 6.5% 8.5%;
+	border-radius: inherit;
+	background-color: hsl(215, 4%, 92%);
+	background-image: radial-gradient(120% 75% at 50% 30%, hsl(215, 8%, 89%) 40%, hsl(215, 2%, 87%) 90%);
+	transform-style: preserve-3d;
+	transform-origin: bottom;
+	transform: rotateX(calc(-180deg + var(--screen-rotation, 0deg))) translateZ(-1px);
+}
+
+.screen::after {
+	content: '';
+	position: absolute;
+	top: 10.4875%;
+	left: 8.5%;
+	right: 8.5%;
+	bottom: 10.4875%;
+	transform: translateZ(2px);
+	background-color: hsla(215, 100%, 80%, 0.1);
+	box-shadow: inset 0 -0.5px 2px hsla(0, 0%, 0%, 0.3);
+	backface-visibility: hidden;
+	pointer-events: none;
+}
+
+.keyboard {
+	position: absolute;
+	top: 6.5%;
+	left: 5%;
+	right: 5%;
+	height: 53%;
+	background-color: hsla(0, 0%, 0%, 0.01);
+	border-radius: 3% / 4%;
+	box-shadow: inset -0.5px 0 3px hsla(0, 0%, 0%, 0.1);
+	transform-style: preserve-3d;
+}
+
+.keyboard::before,
+.keyboard::after {
+	content: '';
+	position: absolute;
+	top: 2.5%;
+	bottom: 2.5%;
+	width: 4.5%;
+	background: radial-gradient(4px, hsla(0, 0%, 0%, 0.1) 40%, transparent 60%);
+	background-size: 9px 9px;
+}
+
+.keyboard::before {
+	right: 100.5%;
+}
+
+.keyboard::after {
+	left: 100.5%;
+}
+
+.trackpad {
+	position: absolute;
+	left: 33%;
+	right: 33%;
+	bottom: 2.5%;
+	height: 33%;
+	background-color: hsla(0, 0%, 0%, 0.01);
+	border-radius: 3% / 4%;
+	box-shadow: inset -0.5px 0 1px hsla(0, 0%, 0%, 0.1);
+}
+
+.operating-system {
+	width: 100%;
+	height: 100%;
+	background-color: hsl(0, 0%, 69%);
+	background-image: linear-gradient(to bottom, hsl(0, 0%, 0%) 3.5%, hsl(30, 10%, 80%) 0, 75%, hsl(215, 10%, 80%));
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
+	transform: translateZ(2px);
+}
+
+.browser {
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	width: 95%;
+	height: calc(100vh - 4vw - 20px);
+	max-height: 90%;
+	padding-top: 10px;
+	border-radius: 4px;
+	background-color: hsl(0, 0%, 95%);
+	transform-style: preserve-3d;
+	transform: translate3d(-50%, -2vw, 1px);
+}
+
+.tab {
+	position: relative;
+	display: grid;
+	grid-auto-columns: minmax(auto, 800px);
+	justify-content: center;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	padding: 20px 4vw;
+	border-bottom-left-radius: inherit;
+	border-bottom-right-radius: inherit;
+	background-color: white;
+	transform-style: preserve-3d;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+h1.site {
+	font-size: 160%;
+}
+
+h2.title {
+	font-size: 140%;
+}
+
+h3.title {margin-bottom: 10px;}
+
+article.post {
+	margin: 10px 0;
+}
+
+blockquote.snippet {
+	font-size: 60%;
+}
+
+blockquote.snippet span.status {
+	
+}
+
+blockquote.snippet time {
+	
+}
+
+article.post a.link {
+	position: relative;
+	display: inline-block;
+	padding: 2px 4px;
+	margin: -2px -4px;
+	border-radius: 2px;
+}
+
+article.post a.link::after {
+	content: '';
+	position: absolute;
+	left: 4px;
+	right: 4px;
+	bottom: 3px;
+	border-bottom: 2px solid hsla(0, 0%, 0%, 0.1);
+}
+
+article.post a.link:hover {
+	background-color: hsla(0, 0%, 0%, 0.05);
+}
+
+article.post a.link:active {
+	top: 1px;
+	box-shadow: inset 0 1px 1px hsla(0, 0%, 0%, 0.2);
+	background-color: hsla(0, 0%, 0%, 0.15);
+}
+
+
+
+
+
+p.lead {}
+
+
+
+section {
+	display: grid;
+	grid-auto-columns: minmax(auto, 980px);
+	justify-content: center;
+	padding: 60px 4vw;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.tiles {}
+
+.tile {}
+
+
+
+
+
+
+
+
+
+
+
+
+#introduction {
+	position: relative;
+	clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 60px), 50% 100%, 0% calc(100% - 60px));
+	background-color: hsl(0, 73%, 41%);
+	background-image: linear-gradient(0.3turn, hsl(20, 73%, 41%), hsl(340, 73%, 41%));
+	background-image: radial-gradient(circle at bottom left, hsl(20, 73%, 41%), hsl(340, 73%, 41%));
+	color: hsl(0, 0%, 93%);
+	font-size: 110%;
+	line-height: 1.6;
+	text-align: center;
+	transform: translateZ(0px);
+}
+
+em.hint {
+	font-weight: bolder;
+}
+
+
+
+
+
+
+
+
+
+#about {
+
+}
+
+
+
+
+
+
+
+
+#projects {}
+
+ul.tiles {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+	grid-gap: 1rem;
+	grid-auto-flow: dense;
+	padding: 40px;
+}
+
+
+
+
+
+
+
+#articles {
+	clip-path: polygon(0% 0%, 50% 20px, 100% 0%, 100% calc(100% - 20px), 50% 100%, 0% calc(100% - 20px));
+	padding: 60px 4vw;
+	background: darkgrey;
+	color: white;
+	background: var(--dark);
+	color: var(--light);
+}
+
+ol.links li {
+	margin-bottom: 10px;
+}
+
+ol.links a {
+	display: block;
+	padding: 10px;
+	margin: -10px;
+}
+
+ol.links a:hover {
+	background-color: hsla(0, 0%, 100%, 0.05);
+}
+
+ol.links a:active {}
+
+
+ol.links h3 {
+	font-size: 125%;
+}
+
+ol.links p.snippet {
+	font-size: 75%;
+}
+
+ol.links time,
+ol.links span.status {
+	display: inline;
+	vertical-align: baseline;
+	font-size: 75%;
+	opacity: 0.5;
+}
+
+ol.links span.read-more {
+	padding: 2px 0;
+	border-bottom: 2px solid;
+	font-size: 60%;
+}
+
+
+
+
+
+
+#work {}
+
+
+
+
+
+
+
+
+#contact {}
+
+
+
+
+
+
+
+
+
+

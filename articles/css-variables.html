@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TITLE</title>
+	<meta name="author" itemprop="name" content="Martin Pitt">
+	<link rel="canonical" href="https://martinpitt.uk/">
+	<meta name="description" itemprop="description" property="og:description" content="DESCRIPTION">
+	<!-- <meta itemprop="image" property="og:image" content="https://martinpitt.uk/….jpg"> -->
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:creator" content="@Nexii">
+	<meta property="og:url"  content="https://martinpitt.uk/articles/ARTICLE.html">
+	<meta property="og:title" content="TITLE">
+	
+	<script type="application/ld+json">
+		{
+			"@context": "http://schema.org",
+			"@type": "WebPage",
+			"@id": "https://martinpitt.uk",
+			"mainEntity": {
+				"@type": "…?"
+			}
+		}
+	</script>
+	<link rel="stylesheet" href="/style.css">
+
+
+<body>
+<!-- 	<nav class="primary">
+		<a href="/articles/">Articles</a>
+		<a href="/projects/"></a>
+		<a href="/about/"></a>
+		<a href=""></a>
+	</nav> -->
+	<article>
+		<h1>TITLE</h1>
+		<p></p>
+	</article>
+
+
+
+CSS Variables — also known as Custom Properties
+
+
+CSS variables have been around for a while now – I guess the biggest thing over the years is that browsers seem to be a lot faster with them, they can or used to lag whole pages out if you applied rapidly changing vars in the root. This is because custom properties do cascade down like normal ones by default and can be used inside more complex style expressions — browsers are working on optimising such rich, dynamic stylesheets.
+
+_What is recent_ is some cross-browser support around use in CSS animations and calc over time. (See below demo by microsoft)
+
+_What is brand new right now_ however is Houdini-related improvements around being able to treat custom properties as different CSS unit types (<length>, <color>, <time>, <angle>, …):
+https://houdini.glitch.me/custom-properties
+
+
+I remember the awesome demos from 2017 that microsoft did early on to show off and promote css variables in production before they started hitting the other browsers :) https://developer.microsoft.com/en-us/microsoft-edge/testdrive/demos/custom-props/
+
+You can see them showing off css vars being used in various ways: `calc`, driving via JS, and even css animations – really a literal bleeding Edge at the time, hah.
+
+
+There’s loads of usecases, would be awesome to map them all out.
+
+So far I know of:
+
+• `--scroll` — being able to pass scroll position in from page scroll and/or smaller scroll containers, opens a lot of awesome dynamic scrolling animations and effects
+• Theming, an obvious one — but really nice here because we have instant response to user customisation
+• `--window-height` — but you say “we already have vh!” – except `vh` is not the same as `window.innerHeight` – `vh` is very annoyingly modified based on UI chrome in mobile, e.g. when you scroll down and the navigation bar minimises causing your entire page layout to jank the browser and the view to shift, which confuses and frustrates users, instead you can manually derive from `innerHeight`
+• Semantic configuration — being able to use variables to control parts of the page in ways that make sense to humans. This is really awesome because this allows us to avoid _Magic Numbers_ codereadability.com/tag/magic-numbers/
+• New Library possibilities — We can now move a _lot_ of complex JS code back to being declaratively controlled with CSS – and bonus is being able to use everything else that CSS is capable of. A great example is _Splitting.js_ — https://splitting.js.org/
+• Environment variables — this basically just summarises being able to expose the new data from the environment to CSS. Such as the scroll position & window height mentioned before, but we can also think about others, such as raw or processed sensor data, mouse x/y coords, coordinates of elements, …

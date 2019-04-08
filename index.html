@@ -229,24 +229,38 @@
 		let scenes, laptop, articles;
 		
 		const screenCurve = cubicBezier(.49,-0.24,.4,.86);
+		const articleCurve = cubicBezier(.7,.7,.2,.8);
+		const sceneCurve = cubicBezier(1,0,.5,.5);
 		
 		function scrollToScene() {
 			var scroll = document.scrollingElement.scrollTop;
 			
+			const articleEnd = 400;
 			const laptopCloseDistance = 1200;
+			
 			const endOfArticleScroll = articles.scrollHeight - articles.clientHeight;
+			const nearEndOfArticleScroll = endOfArticleScroll - articleEnd;
 			const beforeLaptopClose = endOfArticleScroll - laptopCloseDistance * 0.2;
 			const afterLaptopClose = endOfArticleScroll + laptopCloseDistance * 0.8;
 			
 			
-			articles.scrollTop = Math.min(scroll, endOfArticleScroll);
+			let articleScroll;
+			if(scroll < nearEndOfArticleScroll) articleScroll = scroll;
+			else if(scroll < endOfArticleScroll) articleScroll = nearEndOfArticleScroll + articleCurve((scroll - nearEndOfArticleScroll) / articleEnd) * articleEnd;
+			else articleScroll = endOfArticleScroll;
 			
-			let screenRotation = Math.max(0, Math.min(1, (scroll - beforeLaptopClose) / laptopCloseDistance));
-			screenRotation = 1 - screenCurve(screenRotation);
-			laptop.style.setProperty('--screen-rotation', `${screenRotation * 120}deg`);
+			articles.scrollTop = articleScroll;
 			
-			let scenePosition = Math.max(0, scroll - endOfArticleScroll);
-			scenes.style.setProperty('--position', scenePosition);
+// 			let screenRotation = Math.max(0, Math.min(1, (scroll - beforeLaptopClose) / laptopCloseDistance));
+// 			screenRotation = 1 - screenCurve(screenRotation);
+// 			laptop.style.setProperty('--screen-rotation', `${screenRotation * 120}deg`);
+			
+			let sceneScroll;
+			if(scroll < nearEndOfArticleScroll) sceneScroll = 0;
+			else if(scroll < endOfArticleScroll) sceneScroll = sceneCurve((scroll - nearEndOfArticleScroll) / articleEnd) * articleEnd;
+			else sceneScroll = scroll - nearEndOfArticleScroll;
+			
+			scenes.style.setProperty('--position', sceneScroll);
 		}
 		
 		
@@ -266,12 +280,12 @@
 
 
 <body>
-	<header class="global">
+<!-- 	<header class="global">
 		<h1 class="item name"><a href="">Martin Pitt</a></h1>
 		<a class="item link" href="">Articles</a>
 		<a class="item link" href="">Projects</a>
 		<a class="item link" href="">About</a>
-	</header>
+	</header> -->
 	
 	<div class="scenes">
 		<div id="scene-one" class="scene">
